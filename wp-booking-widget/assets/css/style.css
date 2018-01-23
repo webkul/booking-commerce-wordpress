@@ -1,0 +1,23 @@
+.main{
+  background-color: white;
+  margin-top: 10px;
+  padding: 10px;
+}
+.top{
+   font-size:25px;
+    padding: 3px  ;
+ }
+ p{
+   margin: auto;
+   font-size:15px;
+   font-weight: 500;
+ }
+ .code{
+   margin:10px  30px;
+
+ }
+ .normal{
+      margin: 10px 30px;
+      font-size:15px;
+      font-weight: 200;
+ }
