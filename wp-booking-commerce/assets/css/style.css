@@ -20,3 +20,6 @@
   font-weight: 200;
   margin: 10px 30px;
  }
+ .main form input[type='text']{
+   width:300px;
+ }

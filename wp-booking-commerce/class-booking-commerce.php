@@ -39,6 +39,7 @@ if ( ! function_exists( 'booking_commerce' ) ) {
 					add_action( 'widgets_init', array( $this, 'myplugin_register_widgets' ) );
 					add_shortcode( 'book_widget', array( $this, 'sc_require' ) );
 					add_action( 'plugin_action_links_' . FILE_NAME, array( $this, 'plugin_settings_link' ) );
+					add_action( 'admin_init', array( $this, 'register_booking_link' ), 0 );
 				}
 
 				/**
@@ -58,6 +59,17 @@ if ( ! function_exists( 'booking_commerce' ) ) {
 					array_push( $links, $settings_link );
 					return $links;
 				}
+
+				/**
+				 *for registering setting
+				 *
+				 *
+				 */
+				 public function register_booking_link() {
+
+					 register_setting( 'booking-commerce-link', 'booking_link'  );
+
+				 }
 
 				/**
 				 * Self Script.
@@ -81,7 +93,7 @@ if ( ! function_exists( 'booking_commerce' ) ) {
 					add_options_page(
 						'Booking',
 						'Booking',
-						'manage_options',
+						'read',
 						'booking-setting',
 						array( $this, 'my_setting' )
 					);
@@ -105,8 +117,9 @@ if ( ! function_exists( 'booking_commerce' ) ) {
 				 * Script for booking commerce.
 				 */
 				public static function script() {
+						$url=get_option( 'booking_commerce_link' );
 					?>
-					<script>(function() {var widget = document.createElement('script');widget.async = true;widget.src = 'http://testcom.bookingcommerce.com/widget/js/widget.js';widget.charset = 'UTF-8';widget.setAttribute('crossorigin', '*');widget.onload = function() {new beWidget({    'baseurl':'http://testcom.bookingcommerce.com/en', 'brandColor': '#1747E3', 'widgetType': 'global'})};document.head.appendChild( widget );})();</script>
+					<script>(function() {var widget = document.createElement('script');widget.async = true;widget.src = '<?php echo $url; ?>/widget/js/widget.js';widget.charset = 'UTF-8';widget.setAttribute('crossorigin', '*');widget.onload = function() {new beWidget({    'baseurl':'<?php echo $url; ?>/en', 'brandColor': '#1747E3', 'widgetType': 'global'})};document.head.appendChild( widget );})();</script>
 					<?php
 				}
 
@@ -117,3 +130,12 @@ if ( ! function_exists( 'booking_commerce' ) ) {
 }
 
 add_action( 'plugins_loaded', 'booking_commerce' );
+
+register_activation_hook( __FILE__, 'activation_setting' );
+
+function activation_setting() {
+	$value = 'http://testcom.bookingcommerce.com';
+
+		update_option( 'booking_link', $value );
+
+	}
