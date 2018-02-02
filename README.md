@@ -1,4 +1,5 @@
 === Wordpress Booking commerce plugin ===
+
 Contributors: webkul
 Tags: form, database, db, data, value, shortcode, submit
 Requires at least: 3.7
@@ -10,10 +11,17 @@ License URI: http://www.gnu.org/licenseses/gpl-2.0.html
 Wordpress booking commerce plugin will add a widget on sidebar or inside wordpress page or post which will show the booking details inspite of which framework end user is using
 
 == Description ==
+
 	Features
 		Booking details of end user using widget
 		Booking details of end user using shortcode
 
+== Demo Link ==
+
+http://wordpressdemo.webkul.com/booking-commerce/
+
+Username :- demo123
+Password :- demo123
 
 == Installation ==
 
@@ -28,6 +36,9 @@ Wordpress booking commerce plugin will add a widget on sidebar or inside wordpre
 Feel free to do so.
 
 For any Query please generate a ticket at https://webkul.com/ticket/
+
+= 1.0.1 =
+Added new field for domain backend setting
 
 = 1.0 =
 Initial release
